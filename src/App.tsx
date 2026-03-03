@@ -4,6 +4,10 @@ import "./App.css";
 
 const projectId = import.meta.env.VITE_CLARITY_PROJECT_ID;
 
+if (!projectId) {
+  throw new Error("VITE_CLARITY_PROJECT_ID is not set");
+}
+
 function App() {
   const [isClarityEnabled, setIsClarityEnabled] = useState(false);
 
@@ -20,7 +24,7 @@ function App() {
         srcDoc={`<html><body><h1>Hello, world!</h1></body></html>`}
         width="100%"
         height="100%"
-        name="aleluia"
+        name="iframe-1"
       />
       {!isClarityEnabled && (
         <button onClick={() => setIsClarityEnabled(true)}>
